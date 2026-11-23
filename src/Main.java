@@ -117,7 +117,18 @@ public class Main {
                     break;
 
                 case 4: // delete item
-                    System.out.println("Not implemented");
+                    // list items & get user selection
+                    for (int i=0; i<items.size(); i++) {
+                        System.out.printf("%d. %s%n", i+1, items.get(i).toString());
+                    }
+                    System.out.print("Enter the index of the item to edit: ");
+                    int itemToDelete = scanner.nextInt();
+                    if (itemToDelete < 0 || itemToDelete >= items.size()) {
+                        System.out.println("The selected index is invalid.");
+                        break;
+                    }
+                    items.remove(itemToDelete-1);
+
                     break;
 
                 case 5: // quit
