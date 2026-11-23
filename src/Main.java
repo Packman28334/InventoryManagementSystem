@@ -35,9 +35,7 @@ public class Main {
 
             switch (scanner.nextInt()) {
                 case 1: // display all items
-                    items.forEach((item) -> {
-                        System.out.println(item.toString());
-                    });
+                    items.forEach(item -> System.out.println(item.toString()));
                     break;
 
                 case 2: // add new item
@@ -71,7 +69,7 @@ public class Main {
                         System.out.printf("%d. %s%n", i+1, items.get(i).toString());
                     }
                     System.out.print("Enter the index of the item to edit: ");
-                    int desiredItem = scanner.nextInt();
+                    int desiredItem = scanner.nextInt()-1;
                     if (desiredItem < 0 || desiredItem >= items.size()) {
                         System.out.println("The selected index is invalid.");
                         break;
@@ -87,26 +85,26 @@ public class Main {
                         case 1:
                             scanner.nextLine(); // consume newline
                             System.out.print("Name> ");
-                            items.get(desiredItem-1).setName(scanner.nextLine());
+                            items.get(desiredItem).setName(scanner.nextLine());
                             System.out.println("Renamed item.");
                             break;
 
                         case 2:
                             scanner.nextLine(); // consume newline
                             System.out.print("Description> ");
-                            items.get(desiredItem-1).setDescription(scanner.nextLine());
+                            items.get(desiredItem).setDescription(scanner.nextLine());
                             System.out.println("Changed description.");
                             break;
 
                         case 3:
                             System.out.print("Quantity> ");
-                            items.get(desiredItem-1).setQuantity(scanner.nextInt());
+                            items.get(desiredItem).setQuantity(scanner.nextInt());
                             System.out.println("Updated quantity.");
                             break;
 
                         case 4:
                             System.out.print("Price> ");
-                            items.get(desiredItem-1).setPrice(scanner.nextDouble());
+                            items.get(desiredItem).setPrice(scanner.nextDouble());
                             System.out.println("Updated price.");
                             break;
 
@@ -122,12 +120,12 @@ public class Main {
                         System.out.printf("%d. %s%n", i+1, items.get(i).toString());
                     }
                     System.out.print("Enter the index of the item to edit: ");
-                    int itemToDelete = scanner.nextInt();
+                    int itemToDelete = scanner.nextInt()-1;
                     if (itemToDelete < 0 || itemToDelete >= items.size()) {
                         System.out.println("The selected index is invalid.");
                         break;
                     }
-                    items.remove(itemToDelete-1);
+                    items.remove(itemToDelete);
 
                     break;
 
