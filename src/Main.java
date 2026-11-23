@@ -10,7 +10,7 @@ public class Main {
         items.add(new Item("Carrot", "Orange vegetable", 6, 2));
 
         // start command loop
-        commandLoop();
+        commandLoop(items);
     }
 
     public static void printHelp() {
@@ -23,7 +23,7 @@ public class Main {
         System.out.println("5. Quit");
     }
 
-    public static void commandLoop() {
+    public static void commandLoop(ArrayList<Item> items) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -35,7 +35,9 @@ public class Main {
 
             switch (scanner.nextInt()) {
                 case 1: // display all items
-                    System.out.println("Not implemented");
+                    items.forEach((item) -> {
+                        System.out.println(item.toString());
+                    });
                     break;
                 case 2: // add new item
                     System.out.println("Not implemented");
