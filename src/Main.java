@@ -40,7 +40,26 @@ public class Main {
                     });
                     break;
                 case 2: // add new item
-                    System.out.println("Not implemented");
+                    scanner.nextLine(); // consume the trailing newline leftover from the nextInt() call
+
+                    // get fields from user
+                    System.out.print("Name> ");
+                    String name = scanner.nextLine();
+                    System.out.print("Description> ");
+                    String description = scanner.nextLine();
+                    System.out.print("Quantity> ");
+                    int quantity = scanner.nextInt();
+                    System.out.print("Price> ");
+                    double price = scanner.nextDouble();
+
+                    // validate inputs and add item
+                    if (name.isEmpty() || description.isEmpty() || quantity < 0 || price < 0) {
+                        System.out.println("One or more of the entered values are invalid.");
+                    } else {
+                        items.add(new Item(name, description, quantity, price));
+                        System.out.println("Item added.");
+                    }
+
                     break;
                 case 3: // edit item
                     System.out.println("Not implemented");
