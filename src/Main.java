@@ -39,6 +39,7 @@ public class Main {
                         System.out.println(item.toString());
                     });
                     break;
+
                 case 2: // add new item
                     scanner.nextLine(); // consume the trailing newline leftover from the nextInt() call
 
@@ -61,15 +62,68 @@ public class Main {
                     }
 
                     break;
+
                 case 3: // edit item
-                    System.out.println("Not implemented");
+                    scanner.nextLine(); // consume the trailing newline leftover from the nextInt() call
+
+                    // list items & get user selection
+                    for (int i=0; i<items.size(); i++) {
+                        System.out.printf("%d. %s%n", i+1, items.get(i).toString());
+                    }
+                    System.out.print("Enter the index of the item to edit: ");
+                    int desiredItem = scanner.nextInt();
+                    if (desiredItem < 0 || desiredItem >= items.size()) {
+                        System.out.println("The selected index is invalid.");
+                        break;
+                    }
+
+                    // get user selection for field to edit and handle it accordingly
+                    System.out.println("1. Name");
+                    System.out.println("2. Description");
+                    System.out.println("3. Quantity");
+                    System.out.println("4. Price");
+                    System.out.print("Select the field to edit: ");
+                    switch (scanner.nextInt()) {
+                        case 1:
+                            scanner.nextLine(); // consume newline
+                            System.out.print("Name> ");
+                            items.get(desiredItem-1).setName(scanner.nextLine());
+                            System.out.println("Renamed item.");
+                            break;
+
+                        case 2:
+                            scanner.nextLine(); // consume newline
+                            System.out.print("Description> ");
+                            items.get(desiredItem-1).setDescription(scanner.nextLine());
+                            System.out.println("Changed description.");
+                            break;
+
+                        case 3:
+                            System.out.print("Quantity> ");
+                            items.get(desiredItem-1).setQuantity(scanner.nextInt());
+                            System.out.println("Updated quantity.");
+                            break;
+
+                        case 4:
+                            System.out.print("Price> ");
+                            items.get(desiredItem-1).setPrice(scanner.nextDouble());
+                            System.out.println("Updated price.");
+                            break;
+
+                        default:
+                            System.out.println("Invalid field selected.");
+                            break;
+                    }
                     break;
+
                 case 4: // delete item
                     System.out.println("Not implemented");
                     break;
+
                 case 5: // quit
                     running = false;
                     break;
+
                 default:
                     System.out.println("Unknown command. Please pick from the following list:");
                     printHelp();
